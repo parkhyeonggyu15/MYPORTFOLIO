@@ -475,12 +475,113 @@
 
         /* PROJECTS */
 
-        .project-thumb {
+        .feature-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .feature-tab {
+            font-family: inherit;
+            cursor: pointer;
+            padding: 9px 18px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text-soft);
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+
+        .feature-tab:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        .feature-tab.is-active {
+            background: var(--text);
+            border-color: var(--text);
+            color: #fff;
+        }
+
+        .feature-showcase-item {
+            display: none;
+        }
+
+        .feature-showcase-item.is-active {
+            display: block;
+        }
+
+        .feature-showcase-item img {
             display: block;
             width: 100%;
+            max-height: 520px;
             height: auto;
-            margin: 32px 0;
+            object-fit: contain;
+            background: #f9fafb;
             border: 1px solid var(--border);
+            margin-bottom: 14px;
+        }
+
+        .feature-showcase-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .feature-showcase-gallery img {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 700px) {
+            .feature-showcase-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-showcase-item p {
+            font-size: 0.95rem;
+        }
+
+        .feature-showcase-item p + p {
+            margin-top: 10px;
+        }
+
+        .feature-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-meta-row {
+            font-size: 0.93rem;
+            line-height: 1.55;
+        }
+
+        .feature-meta-row .meta-label {
+            display: inline-block;
+            font-weight: 800;
+            font-size: 0.72rem;
+            letter-spacing: 0.02em;
+            color: var(--accent);
+            background: #eef2ff;
+            padding: 2px 9px;
+            border-radius: 5px;
+            margin-right: 8px;
+            transform: translateY(-1px);
+        }
+
+        .feature-title {
+            font-weight: 800;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-subblock {
+            margin-top: 26px;
         }
 
         .project-detail-body {
@@ -529,6 +630,13 @@
             color: var(--text-soft);
             font-size: 0.98rem;
             min-height: 1.6em;
+        }
+
+        .project-period {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-soft);
+            margin-bottom: 14px;
         }
 
         .project-detail-block {
@@ -858,8 +966,9 @@
                     <h3><span class="dot"></span>Frontend</h3>
                     <div class="skill-tags">
                         <span><img src="https://cdn.simpleicons.org/html5/E34F26" alt="">HTML</span>
-                        <span><img src="https://cdn.simpleicons.org/css3/1572B6" alt="">CSS</span>
+                        <span><img src="https://cdn.simpleicons.org/css/1572B6" alt="">CSS</span>
                         <span><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">JavaScript</span>
+                        <span><img src="https://cdn.simpleicons.org/react/61DAFB" alt="">React</span>
                     </div>
                 </div>
                 <div class="skill-card">
@@ -877,7 +986,7 @@
                     <div class="skill-tags">
                         <span><img src="https://cdn.simpleicons.org/docker/2496ED" alt="">Docker</span>
                         <span><img src="https://cdn.simpleicons.org/jenkins/D24939" alt="">Jenkins</span>
-                        <span><img src="https://cdn.simpleicons.org/amazonec2/FF9900" alt="">AWS EC2</span>
+                        <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="">AWS EC2</span>
                         <span><img src="https://cdn.simpleicons.org/nginx/009639" alt="">Nginx</span>
                         <span><img src="https://cdn.simpleicons.org/git/F05032" alt="">Git</span>
                         <span><img src="https://cdn.simpleicons.org/github/181717" alt="">GitHub</span>
@@ -896,31 +1005,82 @@
                 <div class="project-detail-body">
                     <div class="project-detail-head">
                         <div class="project-detail-title-row">
-                            <h3>ValuePick — 가치 투자 종목 발굴 서비스 (팀 프로젝트)</h3>
+                            <h3>ValuePick — 가치 투자 종목 발굴 서비스 (4인 팀 프로젝트)</h3>
                             <a class="project-github-link" href="https://github.com/project-valuepick/valuepick" target="_blank" rel="noopener">
                                 <img src="https://cdn.simpleicons.org/github/181717" alt="">GitHub
                             </a>
                         </div>
+                        <p class="project-period">2026.06 — 2026.07</p>
                         <p class="project-detail-desc">가치투자 지표 기반 종목 스크리닝 서비스. DART 재무제표, 공공데이터포털 주가, KRX 지수, 한국수출입은행 환율을 매일 자동 수집해 PER·PBR·ROE·Piotroski F-Score 등 투자지표를 계산하고, 다팩터 가중 스코어링으로 저평가 우량주 TOP100을 추천합니다. 개인 투자일지(매수/매도 기록, 손익 관리) 기능을 함께 제공합니다.</p>
+                        <p class="project-detail-desc">GitHub으로 협업했으며, 외부 데이터를 모아 투자지표를 계산하는 부분은 다른 팀원이, 종목 상세조회·재무제표 조회·관심종목·금융 뉴스 자동 수집 기능은 본인이 맡아 진행했습니다.</p>
                     </div>
-
-                    <img class="project-thumb" src="images/valuepick%20메인화면.PNG" alt="ValuePick 메인 홈페이지 화면">
 
                     <div class="project-detail-block">
                         <h4>담당 기능</h4>
-                        <ul class="feature-list">
-                            <li>종목 상세 조회 API 구현 — 회사 기본정보·최신 시세·투자지표·3개월 시세 추이를 하나의 응답으로 조합하는 Controller-Service 계층을 설계했습니다.</li>
-                            <li>재무제표 조회 API 구현 — DART에서 수집된 재무제표 데이터를 조회할 수 있도록 Controller-Service-Repository 3계층을 신규로 설계했습니다.</li>
-                            <li>관심종목 기능 풀스택 구현 — JWT 인증 연동, 등록/삭제 API, N+1 문제를 해결한 4테이블 조인 쿼리, 전용 페이지(반응형 UI, 낙관적 업데이트)를 구현했습니다.</li>
-                            <li>네이버 금융 뉴스 크롤링 기능 구현 — Jsoup 기반 HTML 파싱, 중복 방지 로직, 스케줄러를 통한 자동 수집 파이프라인을 구축했습니다.</li>
-                        </ul>
+                        <div class="feature-tabs" role="tablist">
+                            <button type="button" class="feature-tab is-active" data-feature-tab="0">종목 상세 조회</button>
+                            <button type="button" class="feature-tab" data-feature-tab="1">재무제표 조회</button>
+                            <button type="button" class="feature-tab" data-feature-tab="2">투자지표 차트</button>
+                            <button type="button" class="feature-tab" data-feature-tab="3">뉴스 크롤링</button>
+                            <button type="button" class="feature-tab" data-feature-tab="4">관심종목</button>
+                        </div>
+                        <div class="feature-showcase">
+                            <div class="feature-showcase-item is-active" data-feature-panel="0">
+                                <img src="images/종목api.PNG" alt="종목 상세 조회 화면">
+                                <p class="feature-title">종목 상세 조회</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>회사 기본정보, 최신 시세, 투자지표, 재무제표까지 흩어져 있던 정보를 하나의 화면에서 한 번에 볼 수 있도록 구현했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>여러 번 나눠 불러오던 정보를 요청 한 번으로 받아오도록 만들어, 종목 상세 페이지가 끊김 없이 빠르게 뜨도록 했습니다. (종목 검색·필터링 기능은 다른 팀원 담당)</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>화면에 필요한 데이터를 그때그때 따로 조합하면 나중에 코드가 지저분해질 것 같아, 처음부터 서버에서 미리 정리해 내려주는 방식을 선택했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="1">
+                                <img src="images/재무제표.PNG" alt="재무제표 조회 화면">
+                                <p class="feature-title">재무제표 조회</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>팀원이 DART 공시 자료로 모아둔 재무제표 데이터를 종목별로 조회해 보여주는 기능을 처음부터 설계하고 구현했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>데이터를 모으는 부분과 보여주는 부분을 분리해서 만들어, 나중에 데이터 수집 방식이 바뀌어도 화면 표시 기능은 그대로 유지되는 구조를 만들었습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>데이터를 모으는 일과 보여주는 일은 담당자도 다르고 바뀌는 시점도 다르다고 판단해, 처음부터 역할을 나눠 설계했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="2">
+                                <div class="feature-showcase-gallery">
+                                    <img src="images/차트.PNG" alt="수익 추이 차트 화면">
+                                    <img src="images/차트2.PNG" alt="자산 추이 차트 화면">
+                                </div>
+                                <p class="feature-title">투자지표 차트 (수익·자산 추이)</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>연도별 매출·이익 변화(수익 추이)와 자산·부채·자본 변화(자산 추이)를 탭으로 바꿔가며 볼 수 있는 그래프를 만들었습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>이미 불러온 재무제표 데이터를 그대로 활용해 별도로 서버에 다시 요청하지 않고도, 탭 전환만으로 두 그래프를 즉시 볼 수 있게 만들었습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>매출이나 이익 하나만 보면 회사 상태를 제대로 판단하기 어렵다고 생각해서, 자산과 부채 흐름도 함께 볼 수 있도록 그래프를 하나 더 추가했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="3">
+                                <img src="images/뉴스.PNG" alt="네이버 금융 뉴스 화면">
+                                <p class="feature-title">금융 뉴스 자동 수집</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>네이버 금융에 올라오는 종목별 뉴스를 자동으로 가져와 보여주는 기능을 전담해 구현했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>매시 정각마다 자동으로 새 뉴스를 수집하도록 만들었고, 실제 운영 환경에서 신규 뉴스 20건이 정상 수집되는 것을 확인했습니다. 요청 사이에 짧은 대기 시간을 둬서 안정적으로 수집되도록 했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>너무 빠르게 반복 요청하면 차단될 수 있다고 판단해 요청 간격을 뒀고, 같은 뉴스가 중복 저장되지 않도록 처리했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="4">
+                                <img src="images/관심종목%20페이지.PNG" alt="관심종목 화면">
+                                <p class="feature-title">관심종목 기능 (화면과 서버 모두 담당)</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>로그인한 사용자가 원하는 종목을 관심종목으로 등록·삭제·조회할 수 있는 기능을 화면부터 서버까지 전부 구현했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>종목 개수만큼 반복해서 데이터를 조회하던 방식을 한 번의 조회로 합쳐 속도를 개선했고, 존재하지 않는 종목을 등록하려 하거나 이미 등록된 종목을 중복 등록하는 등 예외 상황도 문제없이 처리되도록 만들었습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>뒤로가기로 페이지를 다시 열었을 때 화면이 최신 상태로 갱신되지 않는 문제를 직접 찾아내, 페이지가 다시 보일 때 데이터를 새로고침하도록 고쳐 해결했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="project-detail-block">
                         <h4>트러블슈팅</h4>
                         <ul class="feature-list">
-                            <li><strong>API 요청 URL 이중 조합 버그</strong> — 관심종목 API 호출이 모두 실패했습니다. 인증 헤더를 자동으로 붙여주는 공통 유틸 함수(authFetch)가 내부적으로 이미 도메인을 붙이고 있었는데, 호출부에서도 도메인을 중복으로 붙여 잘못된 URL이 생성되고 있던 것이 원인이었습니다. 호출부에서 도메인 접두사를 제거해 공통 함수가 해당 책임을 전담하도록 수정했습니다.</li>
-                            <li><strong>JWT 인증 정보 복원 시 사용자 ID 누락 버그</strong> — 로그인은 되지만 관심종목 등록 시 사용자를 특정하지 못하는 문제가 있었습니다. JWT 토큰으로 인증 정보를 복원하는 로직이 이메일 존재 여부만 boolean으로 확인하고, 사용자 DTO에는 ID 필드를 채우지 않고 있던 것을 역추적으로 확인했습니다. 엔티티를 직접 조회하도록 변경해 DTO 생성 시 ID를 명시적으로 채우도록 수정했습니다.</li>
+                            <li><strong>관심종목 등록이 계속 실패하던 문제</strong> — 서버에 요청을 보낼 주소가 중복으로 조합되면서 잘못된 주소로 요청이 나가고 있던 것이 원인이었습니다. 주소를 만드는 부분을 한 곳에서만 처리하도록 정리해 해결했습니다.</li>
+                            <li><strong>로그인은 되는데 관심종목 등록이 안 되던 문제</strong> — 로그인 정보를 다시 불러오는 과정에서 사용자를 구분하는 값이 채워지지 않고 있던 것이 원인이었습니다. 로그인 정보를 복원할 때 해당 값을 함께 채우도록 수정해 해결했습니다.</li>
                         </ul>
                     </div>
 
@@ -934,10 +1094,10 @@
                             <span><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="">MySQL</span>
                             <span><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">JavaScript</span>
                             <span><img src="https://cdn.simpleicons.org/html5/E34F26" alt="">HTML</span>
-                            <span><img src="https://cdn.simpleicons.org/css3/1572B6" alt="">CSS</span>
+                            <span><img src="https://cdn.simpleicons.org/css/1572B6" alt="">CSS</span>
                             <span><img src="https://cdn.simpleicons.org/docker/2496ED" alt="">Docker</span>
                             <span><img src="https://cdn.simpleicons.org/jenkins/D24939" alt="">Jenkins</span>
-                            <span><img src="https://cdn.simpleicons.org/amazonec2/FF9900" alt="">AWS EC2</span>
+                            <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="">AWS EC2</span>
                             <span><img src="https://cdn.simpleicons.org/nginx/009639" alt="">Nginx</span>
                         </div>
                     </div>
@@ -953,14 +1113,14 @@
             </div>
             <div class="contact-card">
                 <div class="contact-item">
-                    <div class="icon"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="Phone"></div>
-                    <span class="label">Phone</span>
-                    <span class="value">010-5433-9484</span>
+                    <div class="icon"><img src="https://cdn.simpleicons.org/googlemaps/4285F4" alt="Location"></div>
+                    <span class="label">Location</span>
+                    <span class="value">Daegu,KR</span>
                 </div>
                 <div class="contact-item">
                     <div class="icon"><img src="https://cdn.simpleicons.org/naver/03C75A" alt="Email"></div>
                     <span class="label">Email</span>
-                    <span class="value">gudrb15@naver.com</span>
+                    <span class="value"><a href="mailto:gudrb15@naver.com">gudrb15@naver.com</a></span>
                 </div>
                 <div class="contact-item">
                     <div class="icon"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram"></div>
@@ -992,6 +1152,19 @@
 
             observer.observe(aboutPhoto);
         }
+
+        const featureTabs = document.querySelectorAll('.feature-tab');
+        featureTabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                const targetIndex = tab.dataset.featureTab;
+
+                featureTabs.forEach((t) => t.classList.toggle('is-active', t === tab));
+
+                document.querySelectorAll('.feature-showcase-item').forEach((panel) => {
+                    panel.classList.toggle('is-active', panel.dataset.featurePanel === targetIndex);
+                });
+            });
+        });
     </script>
 </body>
 
