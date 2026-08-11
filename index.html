@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>박형규 | Portfolio</title>
     <style>
+        @font-face {
+            font-family: 'OnglipUiyeon';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Uiyeun.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         :root {
             --accent: #2563eb;
             --bg: #ffffff;
@@ -22,7 +30,7 @@
         }
 
         body {
-            font-family: "Pretendard", "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+            font-family: "Segoe UI", "Apple SD Gothic Neo", sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -70,7 +78,7 @@
         }
 
         section {
-            padding: 100px 8%;
+            padding: 160px 8%;
         }
 
         .section-inner {
@@ -203,9 +211,11 @@
         }
 
         #hero h1 {
-            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-family: "OnglipUiyeon", "Apple SD Gothic Neo", sans-serif;
+            font-size: clamp(3.4rem, 8vw, 6.4rem);
             font-weight: 800;
-            line-height: 1.15;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
         }
 
         #hero h1 span {
@@ -213,10 +223,11 @@
         }
 
         .hero-desc {
-            margin-top: 20px;
-            font-size: 1.1rem;
+            margin-top: 28px;
+            font-size: 1.3rem;
             color: var(--text-soft);
             min-height: 1.6em;
+            max-width: 480px;
         }
 
         .hero-buttons {
@@ -259,7 +270,7 @@
 
         /* SECTION TITLES */
         .section-head {
-            margin-bottom: 50px;
+            margin-bottom: 72px;
         }
 
         .section-head .tag {
@@ -267,8 +278,10 @@
         }
 
         .section-head h2 {
-            font-size: 2.2rem;
+            font-family: "OnglipUiyeon", "Apple SD Gothic Neo", sans-serif;
+            font-size: clamp(2.6rem, 4.5vw, 3.6rem);
             font-weight: 800;
+            letter-spacing: -0.01em;
         }
 
         /* ABOUT */
@@ -303,6 +316,17 @@
         }
 
         .about-photo.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.in-view {
             opacity: 1;
             transform: translateY(0);
         }
@@ -474,6 +498,121 @@
         }
 
         /* PROJECTS */
+
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            font-family: inherit;
+            cursor: pointer;
+            text-align: left;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            padding: 0;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: var(--text);
+            transform: translateY(-4px);
+        }
+
+        .project-card img {
+            display: block;
+            width: 100%;
+            height: 240px;
+            object-fit: contain;
+            background: #f9fafb;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-card-body {
+            padding: 22px;
+        }
+
+        .project-card-body h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .project-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            margin-bottom: 10px;
+        }
+
+        .project-card-period {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-soft);
+        }
+
+        /* PROJECT MODAL */
+        .project-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .project-modal.is-open {
+            display: flex;
+        }
+
+        .project-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(17, 24, 39, 0.55);
+        }
+
+        .project-modal-dialog {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 16px;
+            max-width: 760px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 44px;
+        }
+
+        .project-modal-close {
+            position: sticky;
+            top: 0;
+            left: 100%;
+            margin-bottom: -32px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-soft);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .project-modal-close:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        @media (max-width: 700px) {
+            .project-modal-dialog {
+                padding: 28px;
+                max-height: 90vh;
+            }
+        }
 
         .feature-tabs {
             display: flex;
@@ -952,6 +1091,10 @@
                     <h3>데이터분석준전문가 (ADsP)</h3>
                     <span class="cert-date">2026.03 </span>
                 </div>
+                <div class="cert-row">
+                    <h3>운전면허 1종보통</h3>
+                    <span class="cert-date">2020.01 </span>
+                </div>
             </div>
         </div>
     </section>
@@ -968,7 +1111,10 @@
                         <span><img src="https://cdn.simpleicons.org/html5/E34F26" alt="">HTML</span>
                         <span><img src="https://cdn.simpleicons.org/css/1572B6" alt="">CSS</span>
                         <span><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">JavaScript</span>
+                        <span><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="">TypeScript</span>
                         <span><img src="https://cdn.simpleicons.org/react/61DAFB" alt="">React</span>
+                        <span><img src="https://cdn.simpleicons.org/vite/646CFF" alt="">Vite</span>
+                        <span><img src="https://cdn.simpleicons.org/reactquery/FF4154" alt="">TanStack Query</span>
                     </div>
                 </div>
                 <div class="skill-card">
@@ -1001,6 +1147,30 @@
             <div class="section-head">
                 <h2>Projects</h2>
             </div>
+            <div class="project-cards">
+                <button type="button" class="project-card" data-open-modal="modal-valuepick">
+                    <img src="images/valuepick_home.png" alt="ValuePick 대표 이미지">
+                    <div class="project-card-body">
+                        <h3>ValuePick</h3>
+                        <p class="project-card-desc">가치투자 지표 기반 종목 발굴 서비스 (4인 팀 프로젝트)</p>
+                        <p class="project-card-period">2026.06 — 2026.07</p>
+                    </div>
+                </button>
+                <button type="button" class="project-card" data-open-modal="modal-fotdata">
+                    <img src="images/fotdata_home.png" alt="FotData 대표 이미지">
+                    <div class="project-card-body">
+                        <h3>FotData</h3>
+                        <p class="project-card-desc">해외축구 데이터 분석 및 예측 서비스 (개인 프로젝트)</p>
+                        <p class="project-card-period">2026.07 — 2026.08</p>
+                    </div>
+                </button>
+            </div>
+
+            <div class="project-modal" id="modal-valuepick">
+              <div class="project-modal-overlay" data-close-modal></div>
+              <div class="project-modal-dialog">
+                <button type="button" class="project-modal-close" data-close-modal aria-label="닫기">✕</button>
+                <div class="project-modal-content">
             <div class="project-detail">
                 <div class="project-detail-body">
                     <div class="project-detail-head">
@@ -1065,7 +1235,7 @@
                                 </div>
                             </div>
                             <div class="feature-showcase-item" data-feature-panel="4">
-                                <img src="images/관심종목%20페이지.PNG" alt="관심종목 화면">
+                                <img src="images/관심종목_페이지.PNG" alt="관심종목 화면">
                                 <p class="feature-title">관심종목 기능 (화면과 서버 모두 담당)</p>
                                 <div class="feature-meta">
                                     <p class="feature-meta-row"><span class="meta-label">역할</span>로그인한 사용자가 원하는 종목을 관심종목으로 등록·삭제·조회할 수 있는 기능을 화면부터 서버까지 전부 구현했습니다.</p>
@@ -1102,6 +1272,115 @@
                         </div>
                     </div>
                 </div>
+            </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-modal" id="modal-fotdata">
+              <div class="project-modal-overlay" data-close-modal></div>
+              <div class="project-modal-dialog">
+                <button type="button" class="project-modal-close" data-close-modal aria-label="닫기">✕</button>
+                <div class="project-modal-content">
+            <div class="project-detail">
+                <div class="project-detail-body">
+                    <div class="project-detail-head">
+                        <div class="project-detail-title-row">
+                            <h3>FotData — 해외축구 데이터 분석 및 예측 서비스 (개인 프로젝트)</h3>
+                            <a class="project-github-link" href="https://github.com/parkhyeonggyu15/FotData" target="_blank" rel="noopener">
+                                <img src="https://cdn.simpleicons.org/github/181717" alt="">GitHub
+                            </a>
+                        </div>
+                        <p class="project-period">2026.07 — 2026.08</p>
+                        <p class="project-detail-desc">EPL·라리가·분데스리가·세리에A·리그1·UEFA 챔피언스리그의 경기 데이터를 football-data.org API로 매일 자동 수집해 팀 성적, ELO 레이팅, 경기 승률·시즌 순위·득점왕 예측까지 제공하는 축구 분석 서비스입니다. 기획부터 백엔드 API 설계, 프론트엔드 UI, 배치 스케줄링까지 전 과정을 혼자 설계하고 구현했습니다.</p>
+                        <p class="project-detail-desc">단순 데이터 조회를 넘어, 체스 레이팅 시스템인 ELO를 축구 도메인에 맞게 변형(홈 어드밴티지 보정, 무승부 확률 모델링)해 팀 실력을 정량화하고, 이를 기반으로 몬테카를로 시뮬레이션을 2,000회 반복해 시즌 순위를 확률적으로 예측하는 분석 로직을 직접 설계했습니다.</p>
+                    </div>
+
+                    <div class="project-detail-block">
+                        <h4>담당 기능</h4>
+                        <div class="feature-tabs" role="tablist">
+                            <button type="button" class="feature-tab is-active" data-feature-tab="fd0">경기·순위 조회</button>
+                            <button type="button" class="feature-tab" data-feature-tab="fd1">ELO 레이팅</button>
+                            <button type="button" class="feature-tab" data-feature-tab="fd2">경기 승률 예측</button>
+                            <button type="button" class="feature-tab" data-feature-tab="fd3">시즌 순위·득점왕 예측</button>
+                            <button type="button" class="feature-tab" data-feature-tab="fd4">관리자 데이터 동기화</button>
+                        </div>
+                        <div class="feature-showcase">
+                            <div class="feature-showcase-item is-active" data-feature-panel="fd0">
+                                <img src="images/fotdata_matches.png" alt="경기 목록 및 순위표 화면">
+                                <p class="feature-title">경기 목록 · 순위표 조회</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>리그·시즌·라운드별 경기 결과, 팀 득점/실점 순위, 선수 개인 득점 순위, 팀 상세 성적(승무패·홈원정 득실차·최근 폼)을 조회하는 API와 화면을 전부 구현했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>실제 6개 대회의 2025-2026 시즌 전체 데이터를 동기화해 검증했고, 이 과정에서 UEFA 챔피언스리그의 토너먼트 구조(matchday가 없는 경기)와 리그1의 몰수패(AWARDED) 상태값 등 대회별 데이터 정합성 버그를 직접 발견해 수정했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>같은 라운드 번호라도 시즌이 다르면 다른 경기라는 점을 놓쳐 데이터가 섞이는 버그를 겪은 뒤, 리그+시즌+라운드 조합이 있어야 경기를 유일하게 특정할 수 있다는 걸 체감했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="fd1">
+                                <img src="images/fotdata_elo.png" alt="ELO 순위 화면">
+                                <p class="feature-title">ELO 레이팅 시스템</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>체스에서 쓰이는 ELO 레이팅 공식을 축구에 맞게 변형해 팀별 실력 지표를 계산하는 로직을 설계했습니다. 홈 어드밴티지 보정값을 더하고, 경기 결과가 확정될 때마다 두 팀의 레이팅을 자동으로 갱신합니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>시즌 구분 없이 누적되는 전역 지표로 설계해, 시즌이 바뀌어도 팀 실력의 흐름이 끊기지 않고 이어지도록 했습니다. 실제 2025-2026 시즌 데이터로 계산한 결과 상위권 팀(맨시티, 아스날 등)이 실제 성적과 일치하는 순서로 나오는 것을 확인했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>새로 생성되는 경기가 처음부터 '종료' 상태로 들어오면(과거 시즌 동기화 시) 레이팅 갱신 로직이 이를 놓치는 버그를 발견해, 기존 경기 존재 여부를 먼저 확인하도록 순서를 바꿔 해결했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="fd2">
+                                <img src="images/fotdata_predict_match.png" alt="경기 승률 예측 화면">
+                                <p class="feature-title">경기 승률 예측</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>두 팀의 ELO 차이를 승/무/패 확률로 변환하는 예측 모델을 구현했습니다. 체스식 승률 공식은 무승부가 없어, 실력 차이가 클수록 무승부 확률이 낮아지도록 별도의 보정 공식을 추가했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>동일 실력 팀 간 대결에서는 홈팀이 근소하게 유리하고, 실력 차이가 커질수록 무승부 확률이 자연스럽게 줄어드는 것을 단위 테스트로 검증했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>단순히 이길 확률만 보여주기보다, 왜 그런 결과가 나왔는지 설명 가능한 지표(ELO 차이)를 기반으로 삼아야 사용자가 예측 결과를 신뢰할 수 있다고 생각했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="fd3">
+                                <img src="images/fotdata_predict_season.png" alt="시즌 순위 예측 화면">
+                                <p class="feature-title">시즌 순위 · 득점왕 예측</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>남은 시즌 전체 일정을 ELO 승률로 2,000회 몬테카를로 시뮬레이션해 팀별 평균 순위·우승 확률·강등 확률을 계산했습니다. 득점왕은 지난 시즌 경기당 득점률을 다음 시즌 예상 경기 수에 대입해 추정했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>강등된 팀이 새 시즌 순위 예측에 잘못 포함되는 버그와, 리그전 방식으로 설계한 득점왕 예측 로직을 경기 수 체계가 다른 토너먼트 대회(UEFA 챔피언스리그)에 그대로 적용했을 때 비현실적인 값이 나오는 문제를 각각 발견해, 예측 대상 팀을 실제 시즌 픽스처 기준으로 다시 산정하고 토너먼트 대회는 이 예측에서 제외하도록 수정했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>같은 계산 로직이라도 대회 방식(리그전 vs 토너먼트)에 따라 전제가 달라질 수 있다는 것을, 실제 데이터로 검증하는 과정에서 발견하고 대응했습니다.</p>
+                                </div>
+                            </div>
+                            <div class="feature-showcase-item" data-feature-panel="fd4">
+                                <p class="feature-title">관리자 API 및 자동 동기화 스케줄러</p>
+                                <div class="feature-meta">
+                                    <p class="feature-meta-row"><span class="meta-label">역할</span>외부 API 데이터를 리그별로 동기화하는 관리자 전용 API와, 하루 2회 6개 대회를 자동으로 동기화하는 배치 스케줄러를 구현했습니다. 관리자 API는 별도 인증 필터로 보호했습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">성과</span>무료 API 티어의 호출 제한에 걸리지 않도록 요청 간 최소 대기시간을 둔 레이트 리미터를 직접 구현했고, 신규/기존 경기를 구분해 처리하는 upsert 로직으로 중복 없이 안전하게 반복 동기화할 수 있도록 만들었습니다.</p>
+                                    <p class="feature-meta-row"><span class="meta-label">인사이트</span>관리자 기능이라고 인증을 소홀히 하면 안 된다고 판단해, 요청 헤더의 키 값이 비어있으면 무조건 차단하는 fail-closed 방식으로 설계했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-detail-block">
+                        <h4>트러블슈팅</h4>
+                        <ul class="feature-list">
+                            <li><strong>같은 라운드에 다른 시즌 경기가 섞여 조회되던 문제</strong> — 경기를 리그+라운드로만 구분하고 시즌을 구분하지 않아 발생했습니다. 시즌 컬럼을 추가하고 조회 조건에 포함시켜 해결했습니다.</li>
+                            <li><strong>과거 시즌 동기화 시 팀 성적이 갱신되지 않던 문제</strong> — 새로 생성되는 경기가 이미 '종료' 상태로 만들어지면서, '새로 종료된 경기인지' 판단하는 로직이 이를 놓치고 있었습니다. 기존 경기 존재 여부를 먼저 조회해 판단 기준으로 삼도록 순서를 바꿔 해결했습니다.</li>
+                            <li><strong>UEFA 챔피언스리그 동기화 시 저장이 실패하던 문제</strong> — 토너먼트 단계 경기는 라운드 번호가 없는데, 해당 컬럼이 필수값으로 설정되어 있었습니다. 컬럼을 선택값으로 바꾸고 DB 스키마도 함께 수정해 해결했습니다.</li>
+                            <li><strong>강등된 팀이 새 시즌 순위 예측에 포함되던 문제</strong> — 팀의 리그 소속 정보가 고정값이라 승격·강등을 반영하지 못했습니다. 예측 대상을 리그 소속 팀 전체가 아니라 실제 해당 시즌 경기 일정에 등장하는 팀만으로 한정해 해결했습니다.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-detail-block">
+                        <h4>기술 스택</h4>
+                        <div class="project-stack">
+                            <span><img src="https://cdn.simpleicons.org/openjdk/000000" alt="">Java</span>
+                            <span><img src="https://cdn.simpleicons.org/spring/6DB33F" alt="">Spring Boot</span>
+                            <span><img src="https://cdn.simpleicons.org/hibernate/59666C" alt="">JPA</span>
+                            <span><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="">MySQL</span>
+                            <span><img src="https://cdn.simpleicons.org/react/61DAFB" alt="">React</span>
+                            <span><img src="https://cdn.simpleicons.org/vite/646CFF" alt="">Vite</span>
+                            <span><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="">TypeScript</span>
+                            <span><img src="https://cdn.simpleicons.org/reactrouter/CA4245" alt="">React Router</span>
+                            <span><img src="https://cdn.simpleicons.org/reactquery/FF4154" alt="">TanStack Query</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+              </div>
             </div>
         </div>
     </section>
@@ -1143,25 +1422,59 @@
             // (rootMargin 하단을 -40%로 좁혀서, 페이지 로드 직후 화면에 걸쳐 보이는 것만으로는 트리거되지 않게 함)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        observer.unobserve(entry.target);
-                    }
+                    entry.target.classList.toggle('in-view', entry.isIntersecting);
                 });
             }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
 
             observer.observe(aboutPhoto);
         }
 
-        const featureTabs = document.querySelectorAll('.feature-tab');
-        featureTabs.forEach((tab) => {
-            tab.addEventListener('click', () => {
-                const targetIndex = tab.dataset.featureTab;
+        document.querySelectorAll(
+            '.section-head, .about-inner, .archive-card, .timeline-item, .cert-row, .skill-card, .project-cards, .contact-card'
+        ).forEach((el) => el.classList.add('reveal'));
 
-                featureTabs.forEach((t) => t.classList.toggle('is-active', t === tab));
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                entry.target.classList.toggle('in-view', entry.isIntersecting);
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
-                document.querySelectorAll('.feature-showcase-item').forEach((panel) => {
-                    panel.classList.toggle('is-active', panel.dataset.featurePanel === targetIndex);
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+        document.querySelectorAll('.project-card').forEach((card) => {
+            card.addEventListener('click', () => {
+                const modal = document.getElementById(card.dataset.openModal);
+                if (modal) {
+                    modal.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        document.querySelectorAll('.project-modal').forEach((modal) => {
+            const closeModal = () => {
+                modal.classList.remove('is-open');
+                document.body.style.overflow = '';
+            };
+            modal.querySelectorAll('[data-close-modal]').forEach((el) => {
+                el.addEventListener('click', closeModal);
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+            });
+        });
+
+        document.querySelectorAll('.project-detail').forEach((project) => {
+            const featureTabs = project.querySelectorAll('.feature-tab');
+            featureTabs.forEach((tab) => {
+                tab.addEventListener('click', () => {
+                    const targetIndex = tab.dataset.featureTab;
+
+                    featureTabs.forEach((t) => t.classList.toggle('is-active', t === tab));
+
+                    project.querySelectorAll('.feature-showcase-item').forEach((panel) => {
+                        panel.classList.toggle('is-active', panel.dataset.featurePanel === targetIndex);
+                    });
                 });
             });
         });
